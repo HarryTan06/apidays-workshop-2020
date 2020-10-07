@@ -2,7 +2,12 @@ const express = require("express");
 const { join } = require("path");
 const morgan = require("morgan");
 const helmet = require("helmet");
+const https = require('https');
+const fs = require('fs');
+
 const app = express();
+const key = fs.readFileSync('./my-website-key.pem');
+const cert = fs.readFileSync('./my-website.pem');
 
 app.use(morgan("dev"));
 app.use(helmet());
@@ -20,4 +25,11 @@ process.on("SIGINT", function() {
   process.exit();
 });
 
-module.exports = app;
+
+const myWebsite = (() => {
+  https.createServer({key, cert}, app).listen('3000', () => {
+    console.log('Listening on https://my-website:3000');
+  });
+})();
+
+module.exports = myWebsite;

@@ -38,7 +38,13 @@ clients:
     oidc_conformant: true
     sso_disabled: false
   - name: my-website
+    allowed_clients: []
+    allowed_logout_urls:
+      - 'https://my-website:3000'
     app_type: spa
+    callbacks:
+      - 'https://my-website:3000'
+    client_aliases: []
     cross_origin_auth: false
     custom_login_page_on: true
     grant_types:
@@ -51,9 +57,16 @@ clients:
       alg: RS256
       lifetime_in_seconds: 36000
       secret_encoded: false
+    native_social_login:
+      apple:
+        enabled: false
+      facebook:
+        enabled: false
     oidc_conformant: true
     sso_disabled: false
     token_endpoint_auth_method: none
+    web_origins:
+      - 'https://my-website:3000'
 databases:
   - name: Username-Password-Authentication
     strategy: auth0
