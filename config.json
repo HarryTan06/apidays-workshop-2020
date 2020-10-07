@@ -1,0 +1,8 @@
+{
+  "AUTH0_DOMAIN": "apidays-workshop-2020.au.auth0.com",
+  "AUTH0_CLIENT_ID": "C6bHmtKMZn5BBprHpgVqNiALF8eU7DnM",
+  "AUTH0_CLIENT_SECRET": "",
+  "AUTH0_KEYWORD_REPLACE_MAPPINGS": { "AUTH0_TENANT_NAME": "apidays-workshop-2020.au.auth0.com" },
+  "AUTH0_ALLOW_DELETE": true,
+  "AUTH0_EXCLUDED_RULES": [ "rule-1-name" ]
+}
