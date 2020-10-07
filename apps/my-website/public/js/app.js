@@ -127,3 +127,14 @@ window.onload = async () => {
 
   updateUI();
 };
+
+const getSecret = async () => {
+  const response = await fetch("https://gusb5l23ic.execute-api.ap-southeast-1.amazonaws.com/dev/secret", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8"
+    }
+  })
+  const secret = await response.json();
+  console.log("response is: ", secret)
+}
