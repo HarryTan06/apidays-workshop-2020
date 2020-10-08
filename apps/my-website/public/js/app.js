@@ -129,10 +129,16 @@ window.onload = async () => {
 };
 
 const getSecret = async () => {
+  const accessToken = await auth0.getTokenSilently({
+    audience: "https://my-secret-api",
+    scope: "read:secret"
+  })
+
   const response = await fetch("https://gusb5l23ic.execute-api.ap-southeast-1.amazonaws.com/dev/secret", {
     method: "GET",
     headers: {
-      "Content-Type": "application/json;charset=UTF-8"
+      "Content-Type": "application/json;charset=UTF-8",
+      "Authorization": `Bearer ${accessToken}`
     }
   })
   const secret = await response.json();
