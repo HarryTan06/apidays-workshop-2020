@@ -6,7 +6,7 @@ resourceServers:
   - name: my-secret-api
     identifier: 'https://my-secret-api'
     allow_offline_access: false
-    enforce_policies: false
+    enforce_policies: true
     scopes:
       - value: 'read:secret'
         description: Read Secret
@@ -14,7 +14,7 @@ resourceServers:
         description: update secret
     signing_alg: RS256
     skip_consent_for_verifiable_first_party_clients: true
-    token_dialect: access_token
+    token_dialect: access_token_authz
     token_lifetime: 86400
     token_lifetime_for_web: 7200
 clients:
@@ -161,6 +161,11 @@ guardianFactors:
     enabled: false
 guardianFactorProviders: []
 guardianFactorTemplates: []
-roles: []
+roles:
+  - name: Admin
+    description: Admin
+    permissions:
+      - permission_name: 'read:secret'
+        resource_server_identifier: 'https://my-secret-api'
 branding: {}
 prompts: {}
